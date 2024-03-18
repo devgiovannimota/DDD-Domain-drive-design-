@@ -18,7 +18,7 @@ it("Create an answer", async () => {
     instructorId: "1",
     questionId: "1",
   });
-
+  console.log(answer.content);
   expect(answer.content).toEqual(expect.any(String));
-  expect(answer.questionId).toEqual("1");
+  expect(answer.questionId.toValue()).toEqual("1");
 });
