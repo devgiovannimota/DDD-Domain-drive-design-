@@ -1,4 +1,5 @@
-import { UniqueEntityId } from "../../core/entities/unique-entity-id";
+/* eslint-disable prettier/prettier */
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 import { Answer } from "../entities/answer";
 import { IAnswerRepository } from "../repositories/Ianswers-repository";
 

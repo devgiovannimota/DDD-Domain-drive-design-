@@ -5,13 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
     "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^20.11.27",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vitest-globals": "^1.5.0",
     "typescript": "^5.4.2",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.3.1"

@@ -1,8 +1,8 @@
-import { expect, it } from "vitest";
-import { Slug } from "./slug";
+import { expect, it } from 'vitest'
+import { Slug } from './slug'
 
-it("Should be able to create a new slug from text", () => {
-  const slug = Slug.createFromText("Example question title");
+it('Should be able to create a new slug from text', () => {
+  const slug = Slug.createFromText('Example question title')
 
-  expect(slug.value).toEqual("example-question-title");
-});
+  expect(slug.value).toEqual('example-question-title')
+})
