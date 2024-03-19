@@ -1,4 +1,3 @@
-import { expect, it } from "vitest";
 import { AnswerQuestionUseCase } from "./answer-question";
 import { IAnswerRepository } from "../repositories/Ianswers-repository";
 import { Answer } from "../entities/answer";
@@ -18,7 +17,6 @@ it("Create an answer", async () => {
     instructorId: "1",
     questionId: "1",
   });
-  console.log(answer.content);
   expect(answer.content).toEqual(expect.any(String));
   expect(answer.questionId.toValue()).toEqual("1");
 });
