@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { InMemoryQuestionsRepository } from "test/repositories/in-memory-questions-repository";
 import { GetQuestionBySlugUseCase } from "./get-question-by-slug";
-import { Question } from "../../enterprise/entities/question";
-import { UniqueEntityId } from "@/core/entities/unique-entity-id";
+import { MakeQuestion } from "test/factories/make-question";
 import { Slug } from "../../enterprise/entities/value-objects/slug";
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
@@ -16,12 +15,7 @@ describe("Find a question", () => {
     );
   });
   it("Should be able to get a question by slug", async () => {
-    const newQuestion = Question.create({
-      title: "Example question A B C D E",
-      authorId: new UniqueEntityId(),
-      slug: Slug.create("example-question-a-b-c-d-e"),
-      content: "DDD is a type of clean architecture?",
-    });
+    const newQuestion = MakeQuestion();
 
     await inMemoryQuestionsRepository.create(newQuestion);
 
