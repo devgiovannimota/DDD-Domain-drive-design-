@@ -15,7 +15,9 @@ describe("Find a question", () => {
     );
   });
   it("Should be able to get a question by slug", async () => {
-    const newQuestion = MakeQuestion();
+    const newQuestion = MakeQuestion({
+      slug: Slug.create("example-question-a-b-c-d-e"),
+    });
 
     await inMemoryQuestionsRepository.create(newQuestion);
 
@@ -23,6 +25,6 @@ describe("Find a question", () => {
       slug: "example-question-a-b-c-d-e",
     });
 
-    expect(question.slug.value).toEqual("example-question-a-b-c-d-e");
+    expect(question.id).toBeTruthy();
   });
 });

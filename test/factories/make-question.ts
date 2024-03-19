@@ -3,16 +3,22 @@ import {
   Question,
   QuestionProps,
 } from "@/domain/forum/enterprise/entities/question";
-import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
 
-export function MakeQuestion(override: Partial<QuestionProps> = {}) {
-  const question = Question.create({
-    title: "Example question A B C D E",
-    authorId: new UniqueEntityId(),
-    slug: Slug.create("example-question-a-b-c-d-e"),
-    content: "DDD is a type of clean architecture?",
-    ...override,
-  });
+import { faker } from "@faker-js/faker";
+
+export function MakeQuestion(
+  override: Partial<QuestionProps> = {},
+  id?: UniqueEntityId
+) {
+  const question = Question.create(
+    {
+      title: faker.lorem.sentence(),
+      authorId: new UniqueEntityId(),
+      content: faker.lorem.text(),
+      ...override,
+    },
+    id
+  );
 
   return question;
 }
