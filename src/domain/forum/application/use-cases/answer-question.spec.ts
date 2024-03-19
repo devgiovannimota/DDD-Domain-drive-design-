@@ -1,23 +1,24 @@
 /* eslint-disable prettier/prettier */
 import { AnswerQuestionUseCase } from "./answer-question";
-import { IAnswerRepository } from "../repositories/Ianswers-repository";
-import { Answer } from "../../enterprise/entities/answer";
+import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository";
 
-const fakeAnswersRepository: IAnswerRepository = {
-  create: async (answer: Answer) => {
-    console.log(answer);
-  },
-};
+let answerRepository: InMemoryAnswersRepository;
+let answerQuestionUseCase: AnswerQuestionUseCase;
 
-it("Create an answer", async () => {
-  const answerQuestionUseCase = new AnswerQuestionUseCase(
-    fakeAnswersRepository
-  );
-  const answer = await answerQuestionUseCase.execute({
-    content: "Nova resposta",
-    instructorId: "1",
-    questionId: "1",
+describe("Create an answer", () => {
+  beforeEach(() => {
+    answerRepository = new InMemoryAnswersRepository();
+    answerQuestionUseCase = new AnswerQuestionUseCase(answerRepository);
   });
-  expect(answer.content).toEqual(expect.any(String));
-  expect(answer.questionId.toValue()).toEqual("1");
+
+  it("Should be able to creante an answer", async () => {
+    const { answer } = await answerQuestionUseCase.execute({
+      instructorId: "1",
+      questionId: "1",
+      content: "Nova resposta",
+    });
+
+    expect(answer.content).toEqual(expect.any(String));
+    expect(answer.questionId.toValue()).toEqual("1");
+  });
 });
