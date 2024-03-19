@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { Answer } from "../entities/answer";
+import { Answer } from "../../enterprise/entities/answer";
 import { IAnswerRepository } from "../repositories/Ianswers-repository";
 
 interface AnswerQuestionUseCaseRequest {
