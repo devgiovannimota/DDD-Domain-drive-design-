@@ -23,4 +23,11 @@ export class InMemoryAnswersRepository implements IAnswerRepository {
     );
     this.arrAnswers.splice(indexOf, 1);
   }
+
+  async save(answer: Answer) {
+    const indexOf = this.arrAnswers.findIndex(
+      (answers) => answers.id === answer.id
+    );
+    this.arrAnswers[indexOf] = answer;
+  }
 }

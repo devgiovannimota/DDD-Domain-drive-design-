@@ -25,7 +25,10 @@ describe("Edit a question", () => {
       content: "New content",
       title: "New Title",
     });
-    expect(inMemoryQuestionsRepository.arrQuestions).toHaveLength(1);
+    expect(inMemoryQuestionsRepository.arrQuestions[0]).toMatchObject({
+      title: "New Title",
+      content: "New content",
+    });
   });
 });
 
