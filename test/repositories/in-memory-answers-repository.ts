@@ -1,3 +1,4 @@
+import { PaginationParams } from "@/core/repositories/paginations-params";
 import { IAnswerRepository } from "@/domain/forum/application/repositories/Ianswers-repository";
 import { Answer } from "@/domain/forum/enterprise/entities/answer";
 
@@ -5,6 +6,13 @@ export class InMemoryAnswersRepository implements IAnswerRepository {
   public arrAnswers: Answer[] = [];
   async create(answer: Answer) {
     this.arrAnswers.push(answer);
+  }
+
+  async findManyQuestionsId(questionId: string, { page }: PaginationParams) {
+    const answers = this.arrAnswers
+      .filter((answers) => answers.questionId.toString() === questionId)
+      .slice((page - 1) * 20, page * 20);
+    return answers;
   }
 
   async findById(id: string) {

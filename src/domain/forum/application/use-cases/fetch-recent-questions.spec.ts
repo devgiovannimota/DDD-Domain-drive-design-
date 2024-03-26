@@ -42,7 +42,6 @@ describe("Fetch questions", () => {
     const { questions } = await fetchRecentQuestionsUseCase.execute({
       page: 2,
     });
-    console.log(questions);
     expect(questions).toHaveLength(3);
   });
 });
