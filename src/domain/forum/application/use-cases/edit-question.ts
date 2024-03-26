@@ -1,29 +1,40 @@
-/* eslint-disable prettier/prettier */
 import { NotAllowed } from "../../errors/not-allowed";
 import { QuestionNotFoundError } from "../../errors/question-not-found";
 import { IQuestionRepository } from "../repositories/Iquestion-repository";
 
-interface DeleteQuestUseCaseRequest {
-  questionId: string;
+interface EditQuestionUseCaseRequest {
+  title: string;
+  content: string;
   authorId: string;
+  questionId: string;
 }
 
-interface DeleteQuestUseCaseResponse {}
+interface EditQuestionUseCaseResponse {}
 
-export class DeleteQuestionUseCase {
+export class EditQuestionUseCase {
   constructor(private questionRepository: IQuestionRepository) {}
+
   async execute({
-    questionId,
     authorId,
-  }: DeleteQuestUseCaseRequest): Promise<DeleteQuestUseCaseResponse> {
+    title,
+    content,
+    questionId,
+  }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionRepository.findById(questionId);
+
     if (!question) {
       throw new QuestionNotFoundError();
     }
+
     if (authorId !== question.authorId.toString()) {
       throw new NotAllowed();
     }
-    await this.questionRepository.delete(question);
+
+    question.title = title;
+    question.content = content;
+
+    await this.questionRepository.save(question);
+
     return {};
   }
 }

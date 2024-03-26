@@ -34,4 +34,11 @@ export class InMemoryQuestionsRepository implements IQuestionRepository {
   async create(question: Question) {
     this.arrQuestions.push(question);
   }
+
+  async save(question: Question) {
+    const indexOf = this.arrQuestions.findIndex(
+      (questions) => questions.id === question.id
+    );
+    this.arrQuestions[indexOf] = question;
+  }
 }
