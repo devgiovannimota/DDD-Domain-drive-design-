@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-
+import { PaginationParams } from "@/core/repositories/paginations-params";
 import { Question } from "../../enterprise/entities/question";
 
 export interface IQuestionRepository {
@@ -8,4 +8,5 @@ export interface IQuestionRepository {
   findBySlug(slug: string): Promise<Question | null>;
   delete(question: Question): Promise<void>;
   save(question: Question): Promise<void>;
+  findManyRecent(params: PaginationParams): Promise<Question[]>;
 }

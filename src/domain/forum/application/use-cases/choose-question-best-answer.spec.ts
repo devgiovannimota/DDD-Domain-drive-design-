@@ -34,8 +34,6 @@ describe("Choose a question best answer", () => {
       answerId: answer.id.toString(),
       authorId: question.authorId.toString(),
     });
-    console.log(inMemoryAnswersRepository.arrAnswers[0]);
-    console.log(inMemoryQuestionsRepository.arrQuestions[0]);
 
     expect(inMemoryQuestionsRepository.arrQuestions).toHaveLength(1);
   });
