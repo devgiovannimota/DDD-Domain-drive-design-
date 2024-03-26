@@ -1,3 +1,4 @@
+import { Question } from "../../enterprise/entities/question";
 import { NotAllowed } from "../../errors/not-allowed";
 import { QuestionNotFoundError } from "../../errors/question-not-found";
 import { IQuestionRepository } from "../repositories/Iquestion-repository";
@@ -9,7 +10,9 @@ interface EditQuestionUseCaseRequest {
   questionId: string;
 }
 
-interface EditQuestionUseCaseResponse {}
+interface EditQuestionUseCaseResponse {
+  question: Question;
+}
 
 export class EditQuestionUseCase {
   constructor(private questionRepository: IQuestionRepository) {}
@@ -35,6 +38,6 @@ export class EditQuestionUseCase {
 
     await this.questionRepository.save(question);
 
-    return {};
+    return { question };
   }
 }

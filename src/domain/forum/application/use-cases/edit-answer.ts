@@ -1,3 +1,4 @@
+import { Answer } from "../../enterprise/entities/answer";
 import { AnswerNotFoundError } from "../../errors/answer-not-found-error";
 import { NotAllowed } from "../../errors/not-allowed";
 import { IAnswerRepository } from "../repositories/Ianswers-repository";
@@ -8,7 +9,9 @@ interface EditAnswerUseCaseRequest {
   answerId: string;
 }
 
-interface EditAnswerUseCaseResponse {}
+interface EditAnswerUseCaseResponse {
+  answer: Answer;
+}
 
 export class EditAswerUseCase {
   constructor(private answerRepository: IAnswerRepository) {}
@@ -32,6 +35,6 @@ export class EditAswerUseCase {
 
     await this.answerRepository.save(answer);
 
-    return {};
+    return { answer };
   }
 }
