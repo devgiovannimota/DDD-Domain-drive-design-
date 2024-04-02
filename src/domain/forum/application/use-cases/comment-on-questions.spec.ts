@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { InMemoryQuestionsRepository } from "test/repositories/in-memory-questions-repository";
 import { MakeQuestion } from "test/factories/make-question";
-import { NotAllowed } from "../../errors/not-allowed";
-import { MakeAnswer } from "test/factories/make-answers";
 import { InMemoryQuestionCommentsRepository } from "test/repositories/in-memory-comment-questions";
 import { CommentOnQuestionionUseCase } from "./comment-on-question";
 
