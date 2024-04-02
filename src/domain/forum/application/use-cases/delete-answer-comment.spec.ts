@@ -2,7 +2,7 @@
 import { makeQuestionComment } from "test/factories/make-question-comment";
 import { NotAllowed } from "../../errors/not-allowed";
 import { makeAnswerComment } from "test/factories/make-answer-comment";
-import { DeleteAnswerCommentUseCase } from "./delete-comment-answer";
+import { DeleteAnswerCommentUseCase } from "./delete-answer-comment";
 import { InMemoryAnswerCommentsRepository } from "test/repositories/in-memoery-comments-answer-repository";
 
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository;

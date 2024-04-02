@@ -1,3 +1,4 @@
+import { PaginationParams } from "@/core/repositories/paginations-params";
 import { IAnswerCommentRepository } from "@/domain/forum/application/repositories/Ianswer-comments-repository";
 import { AnswerComment } from "@/domain/forum/enterprise/entities/answer-comment";
 
@@ -24,5 +25,15 @@ export class InMemoryAnswerCommentsRepository
       return null;
     }
     return answer;
+  }
+  async findManyByAnswerId(
+    answerId: string,
+    { page }: PaginationParams
+  ): Promise<AnswerComment[]> {
+    const answersComment = this.arrComments
+      .filter((answerComment) => answerComment.answerId.toString() === answerId)
+      .slice((page - 1) * 20, page * 20);
+
+    return answersComment;
   }
 }
